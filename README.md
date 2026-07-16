@@ -1,6 +1,6 @@
 # AI 超级学伴 · Hermes 插件
 
-面向 Hermes 与飞书节点引擎的真实学习内核：诊断、知识点地图、BKT 掌握度、题目答案隔离、错因证据、费曼检查、间隔复习与学习报告。
+面向 Hermes 与飞书节点引擎的真实学习内核：诊断、知识点地图、BKT 掌握度、题目答案隔离、错因证据、费曼检查、间隔复习、互动 H5 素材与学习报告。
 
 ## 安装
 
@@ -18,6 +18,7 @@ hermes gateway restart
 - 标准答案只保存于学习内核，绝不回传到对话中。
 - 模型不能自行宣告“已掌握”；掌握度由 BKT、练习证据和费曼检查共同决定。
 - 学习数据默认保存在 `~/.hermes/study-companion`；可通过 `HERMES_STUDY_DATA_DIR` 指向节点引擎受控存储卷。
+- 互动 H5 默认生成到 `~/.hermes/study-materials`；可通过 `HERMES_STUDY_MATERIAL_DIR` 指向受控的静态文件卷。宿主页面应接收 H5 的 `postMessage` 并调用 `learning_record_material_event` 回写事件。
 - 只使用明确授权的教材、教辅、题目和用户上传材料。
 
 ## 来源与许可证
