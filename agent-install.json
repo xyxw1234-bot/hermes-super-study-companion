@@ -1,0 +1,27 @@
+{
+  "schema_version": "node-engine-agent-install/v1",
+  "product": "AI超级学伴",
+  "publisher": "Chuangshi / Node Engine",
+  "repository": "xyxw1234-bot/hermes-super-study-companion",
+  "release_tag": "v0.2.0",
+  "plugin_name": "ai-super-learning-companion",
+  "plugin_install": "xyxw1234-bot/hermes-super-study-companion",
+  "skill_path": "skills/ai-super-learning-companion/SKILL.md",
+  "minimum_hermes_version": "0.16.0",
+  "required_tools": [
+    "learning_start_diagnostic",
+    "learning_issue_question",
+    "learning_grade_answer",
+    "learning_record_feynman",
+    "learning_next_step",
+    "learning_student_report",
+    "learning_generate_material",
+    "learning_record_material_event"
+  ],
+  "security": {
+    "trusted_publisher": "xyxw1234-bot",
+    "allow_auto_install_only_from_release": true,
+    "allow_arbitrary_git_urls": false,
+    "require_manifest_match": true
+  }
+}
