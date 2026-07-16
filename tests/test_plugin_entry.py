@@ -8,8 +8,8 @@ def test_directory_plugin_entrypoint_loads_and_registers_all_tools():
     try:
         import importlib.util
         spec = importlib.util.spec_from_file_location("isolated_study_plugin", root / "__init__.py")
-        module = importlib.util.module_from_spec(spec)
         assert spec and spec.loader
+        module = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(module)
 
         class Context:
