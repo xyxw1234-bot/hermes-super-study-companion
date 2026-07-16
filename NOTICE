@@ -1,0 +1,7 @@
+AI Super Study Companion
+Copyright 2026 Chuangshi / Node Engine
+
+This project is an independent implementation informed by publicly available
+ideas from HKUDS/DeepTutor (Apache-2.0) and CAHLR/OATutor (MIT). It does not
+vendor either upstream codebase. Upstream names are retained for attribution
+only and do not imply endorsement.

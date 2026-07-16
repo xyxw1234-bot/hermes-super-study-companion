@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "hermes-super-study-companion"
+version = "0.1.0"
+description = "Hermes plugin for evidence-based adaptive learning"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+
+[tool.setuptools.packages.find]
+include = ["ai_super_learning_companion*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
