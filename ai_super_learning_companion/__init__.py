@@ -54,6 +54,21 @@ def _handle_report(args: dict, **kwargs) -> str:
         return json.dumps({"error": str(exc)}, ensure_ascii=False)
 
 
+def _handle_generate_material(args: dict, **kwargs) -> str:
+    try:
+        output_dir = Path(os.getenv("HERMES_STUDY_MATERIAL_DIR", "~/.hermes/study-materials")).expanduser()
+        return json.dumps(_engine().generate_material(args["student_id"], args["course_id"], output_dir), ensure_ascii=False)
+    except Exception as exc:
+        return json.dumps({"error": str(exc)}, ensure_ascii=False)
+
+
+def _handle_material_event(args: dict, **kwargs) -> str:
+    try:
+        return json.dumps(_engine().record_material_event(**args), ensure_ascii=False)
+    except Exception as exc:
+        return json.dumps({"error": str(exc)}, ensure_ascii=False)
+
+
 def _schema(name: str, description: str, properties: dict, required: list[str]) -> dict:
     return {"name": name, "description": description, "parameters": {"type": "object", "properties": properties, "required": required}}
 
@@ -68,6 +83,8 @@ TOOLS = [
     ("learning_record_feynman", _schema("learning_record_feynman", "记录概念/设计类知识点的费曼式解释检查。不能无证据判通过。", {"student_id": _ID, "course_id": _COURSE, "objective_id": {"type": "string"}, "passed": {"type": "boolean"}, "evidence": {"type": "string"}}, ["student_id", "course_id", "objective_id", "passed", "evidence"]), _handle_feynman),
     ("learning_next_step", _schema("learning_next_step", "读取学习内核决定的下一步；每轮辅导先调用，禁止模型自行跳过知识点。", {"student_id": _ID, "course_id": _COURSE}, ["student_id", "course_id"]), _handle_next),
     ("learning_student_report", _schema("learning_student_report", "返回可解释学习报告、掌握证据与当前错因数量；不返回标准答案。", {"student_id": _ID, "course_id": _COURSE}, ["student_id", "course_id"]), _handle_report),
+    ("learning_generate_material", _schema("learning_generate_material", "按当前知识点、错因与掌握度生成真实互动 H5 学习素材。只在已有学习档案后调用。", {"student_id": _ID, "course_id": _COURSE}, ["student_id", "course_id"]), _handle_generate_material),
+    ("learning_record_material_event", _schema("learning_record_material_event", "接收已生成互动素材的学生行为事件，回写掌握度与错因。答对/答错必须携带页面产生的作答证据。", {"student_id": _ID, "course_id": _COURSE, "artifact_id": {"type": "string"}, "event": {"type": "string", "enum": ["question_correct", "question_wrong", "hint_requested", "material_completed"]}, "objective_id": {"type": "string"}, "evidence": {"type": "string", "description": "页面选择、作答或提示请求产生的可追溯证据；答对/答错时必填。"}}, ["student_id", "course_id", "artifact_id", "event", "objective_id"]), _handle_material_event),
 ]
 
 
