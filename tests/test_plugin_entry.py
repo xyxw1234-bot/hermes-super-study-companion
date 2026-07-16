@@ -22,6 +22,7 @@ def test_directory_plugin_entrypoint_loads_and_registers_all_tools():
         assert {tool["name"] for tool in ctx.tools} == {
             "learning_start_diagnostic", "learning_issue_question", "learning_grade_answer",
             "learning_record_feynman", "learning_next_step", "learning_student_report",
+            "learning_generate_material", "learning_record_material_event",
         }
     finally:
         sys.path.remove(str(root))
