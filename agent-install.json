@@ -3,7 +3,7 @@
   "product": "AI超级学伴",
   "publisher": "Chuangshi / Node Engine",
   "repository": "xyxw1234-bot/hermes-super-study-companion",
-  "release_tag": "v0.2.0",
+  "release_tag": "v0.2.1",
   "plugin_name": "ai-super-learning-companion",
   "plugin_install": "xyxw1234-bot/hermes-super-study-companion",
   "skill_path": "skills/ai-super-learning-companion/SKILL.md",

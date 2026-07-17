@@ -92,3 +92,8 @@ def register(ctx) -> None:
     for name, schema, handler in TOOLS:
         ctx.register_tool(name=name, toolset="study_companion", schema=schema, handler=handler, emoji="📚")
     ctx.register_command("学习报告", lambda raw: "请让我先读取你的学习档案后生成报告。", description="查看当前学习报告")
+    ctx.register_skill(
+        "ai-super-learning-companion",
+        Path(__file__).resolve().parents[1] / "skills" / "ai-super-learning-companion" / "SKILL.md",
+        description="AI超级学伴的诊断、练习、反馈与复习工作流。",
+    )

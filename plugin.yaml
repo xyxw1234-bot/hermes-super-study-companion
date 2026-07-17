@@ -1,5 +1,5 @@
 name: ai-super-learning-companion
-version: 0.2.0
+version: 0.2.1
 description: "Evidence-based adaptive learning engine for Hermes: diagnosis, BKT mastery, scaffolded practice, Feynman checks, error evidence, and spaced review."
 author: Chuangshi / Node Engine
 license: Apache-2.0
