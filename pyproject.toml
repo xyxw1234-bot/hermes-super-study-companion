@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "hermes-super-study-companion"
-version = "0.2.1"
+version = "0.2.2"
 description = "Hermes plugin for evidence-based adaptive learning"
 requires-python = ">=3.11"
 license = {text = "Apache-2.0"}
